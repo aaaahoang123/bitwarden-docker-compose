@@ -7,21 +7,7 @@ services:
     volumes:
       - ./data:/data
       - ./log:/log
+    ports:
+      - ${PORT}:80
     env_file:
       - ./bitwarden.env
-
-  proxy:
-    image: caddy:alpine
-    restart: always
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddycerts:/root/.caddy
-      - ./log:/log
-    ports:
-      - 80:80
-      - 443:443
-    env_file:
-      - ./proxy.env
-
-volumes:
-  caddycerts:
