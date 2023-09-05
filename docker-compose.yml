@@ -9,5 +9,6 @@ services:
       - ./log:/log
     ports:
       - ${PORT}:80
+      - ${SOCKET_PORT}:3012
     env_file:
       - ./bitwarden.env
